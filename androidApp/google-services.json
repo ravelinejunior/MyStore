@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1072047958656",
+    "project_id": "mystore-98f85",
+    "storage_bucket": "mystore-98f85.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072047958656:android:e3610e8f200b9a4de1d465",
+        "android_client_info": {
+          "package_name": "com.raveline.mystore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUYZB3nyh2JJdWJefq_tS_N0jKAO1w_xo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
