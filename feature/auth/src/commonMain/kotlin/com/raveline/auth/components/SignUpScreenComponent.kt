@@ -8,28 +8,23 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import mystore.feature.auth.generated.resources.*
 import com.raveline.shared.White
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun AuthenticationScreenComponent(
+fun SignUpScreenComponent(
     modifier: Modifier = Modifier,
     isLoading: Boolean = false,
-    onLoginClick: (String, String) -> Unit = { _, _ -> },
-    onCreateAccountClick: () -> Unit = {},
-    onForgotPasswordClick: () -> Unit = {},
+    onSignUpClick: (String, String) -> Unit = { _, _ -> },
+    onLoginClick: () -> Unit = {},
     onFacebookClick: () -> Unit = {},
     onGoogleClick: () -> Unit = {}
 ) {
@@ -84,7 +79,7 @@ fun AuthenticationScreenComponent(
             }
         }
 
-        // Bottom Card: Login Form
+        // Bottom Card: SignUp Form
         Surface(
             modifier = Modifier
                 .fillMaxWidth()
@@ -99,7 +94,7 @@ fun AuthenticationScreenComponent(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(Res.string.login_title),
+                    text = stringResource(Res.string.signup_title),
                     fontSize = 48.sp,
                     fontWeight = FontWeight.ExtraBold,
                     color = Color(0xFF2D3142),
@@ -138,29 +133,12 @@ fun AuthenticationScreenComponent(
 
                 // Password Field
                 Column(modifier = Modifier.fillMaxWidth()) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = stringResource(Res.string.password_label),
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = textGray
-                        )
-                        TextButton(
-                            onClick = onForgotPasswordClick,
-                            contentPadding = PaddingValues(0.dp)
-                        ) {
-                            Text(
-                                text = stringResource(Res.string.forgot_password),
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.Black
-                            )
-                        }
-                    }
+                    Text(
+                        text = stringResource(Res.string.password_label),
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = textGray
+                    )
                     TextField(
                         value = password,
                         onValueChange = { password = it },
@@ -185,9 +163,9 @@ fun AuthenticationScreenComponent(
 
                 Spacer(modifier = Modifier.height(32.dp))
 
-                // Log In Button
+                // Sign Up Button
                 Button(
-                    onClick = { onLoginClick(email, password) },
+                    onClick = { onSignUpClick(email, password) },
                     enabled = !isLoading,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -203,7 +181,7 @@ fun AuthenticationScreenComponent(
                         )
                     } else {
                         Text(
-                            text = stringResource(Res.string.login_button),
+                            text = stringResource(Res.string.signup_button),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = White
@@ -249,16 +227,16 @@ fun AuthenticationScreenComponent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = stringResource(Res.string.dont_have_account),
+                        text = stringResource(Res.string.already_have_account),
                         fontSize = 14.sp,
                         color = textGray
                     )
                     TextButton(
-                        onClick = onCreateAccountClick,
+                        onClick = onLoginClick,
                         contentPadding = PaddingValues(horizontal = 4.dp)
                     ) {
                         Text(
-                            text = stringResource(Res.string.create_now),
+                            text = stringResource(Res.string.login_now),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black
@@ -267,13 +245,5 @@ fun AuthenticationScreenComponent(
                 }
             }
         }
-    }
-}
-
-@Preview
-@Composable
-fun AuthenticationScreenPreview() {
-    MaterialTheme {
-        AuthenticationScreenComponent ()
     }
 }

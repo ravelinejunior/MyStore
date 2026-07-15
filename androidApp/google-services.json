@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "1072047958656",
-    "project_id": "mystore-98f85",
-    "storage_bucket": "mystore-98f85.firebasestorage.app"
+    "project_number": "112920503446",
+    "firebase_url": "https://testeprojetonovo.firebaseio.com",
+    "project_id": "testeprojetonovo",
+    "storage_bucket": "testeprojetonovo.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1072047958656:android:e3610e8f200b9a4de1d465",
+        "mobilesdk_app_id": "1:112920503446:android:19414df59dc2d3e1bf0eb7",
         "android_client_info": {
           "package_name": "com.raveline.mystore"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCUYZB3nyh2JJdWJefq_tS_N0jKAO1w_xo"
+          "current_key": "AIzaSyCP6GK-WWWg2sA983twBjjyfG_XGu77IR8"
         }
       ],
       "services": {

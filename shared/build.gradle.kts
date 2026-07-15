@@ -41,6 +41,7 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.splash.screen)
+            implementation(project.dependencies.platform(libs.firebase.bom))
         }
         iosMain.dependencies {
             implementation(libs.ktor.darwin.client)
@@ -63,6 +64,9 @@ kotlin {
             implementation(libs.multiplatform.settings)
             implementation(libs.multiplatform.settings.no.arg)
             implementation(libs.multiplatform.settings.make.observable)
+
+            implementation(libs.firebase.auth)
+            implementation(libs.firebase.app)
 
             implementation(libs.coil3)
             implementation(libs.coil3.compose)

@@ -50,6 +50,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.messagebar.kmp)
+            implementation(libs.compose.navigation)
+            implementation(libs.browser.kmp)
 
             implementation(project(":feature:auth"))
         }

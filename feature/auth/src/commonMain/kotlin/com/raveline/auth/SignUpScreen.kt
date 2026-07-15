@@ -11,16 +11,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.raveline.auth.components.AuthenticationScreenComponent
+import com.raveline.auth.components.SignUpScreenComponent
 import rememberMessageBarState
 
 @Composable
-fun AuthenticationScreen(
-    onForgotPasswordClick: () -> Unit = {},
-    onCreateAccountClick: () -> Unit = {},
+fun SignUpScreen(
+    onLoginClick: () -> Unit,
+    onSuccess: () -> Unit,
     onFacebookClick: () -> Unit = {},
     onGoogleClick: () -> Unit = {},
-    onSuccess: () -> Unit = {},
     viewModel: AuthViewModel = viewModel { AuthViewModel() }
 ) {
     val state by viewModel.state.collectAsState()
@@ -45,15 +44,13 @@ fun AuthenticationScreen(
             messageBarState = messageBarState,
             errorMaxLines = 2,
             content = {
-                Column(modifier = Modifier.fillMaxSize())
-                {
-                    AuthenticationScreenComponent(
+                Column(modifier = Modifier.fillMaxSize()) {
+                    SignUpScreenComponent(
                         isLoading = state.isLoading,
-                        onLoginClick = { email, password ->
-                            viewModel.signIn(email, password)
+                        onSignUpClick = { email, password ->
+                            viewModel.signUp(email, password)
                         },
-                        onCreateAccountClick = onCreateAccountClick,
-                        onForgotPasswordClick = onForgotPasswordClick,
+                        onLoginClick = onLoginClick,
                         onFacebookClick = onFacebookClick,
                         onGoogleClick = onGoogleClick
                     )
