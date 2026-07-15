@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
@@ -13,13 +14,13 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "CommonApp"
+            baseName = "di"
             isStatic = true
         }
     }
 
     androidLibrary {
-        namespace = "com.raveline.mystore.commonApp"
+        namespace = "com.raveline.mystore.di"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
 
@@ -35,12 +36,6 @@ kotlin {
     }
 
     sourceSets {
-        androidMain.dependencies {
-            implementation(libs.compose.uiToolingPreview)
-            implementation(libs.androidx.activity.compose)
-            implementation(libs.splash.screen)
-            implementation(libs.koin.android)
-        }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
             implementation(libs.compose.foundation)
@@ -51,15 +46,10 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
-            implementation(project(":navigation"))
-            implementation(project(":shared"))
-            implementation(project(":di"))
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
-        }
-        jsMain.dependencies {
-            implementation(libs.wrappers.browser)
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+
         }
     }
 }
