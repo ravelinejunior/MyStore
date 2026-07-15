@@ -14,22 +14,22 @@ fun SetupNavGraph() {
 
     NavHost(
         navController = navController,
-        startDestination = "login"
+        startDestination = Screens.Login
     ) {
-        composable("login") {
+        composable<Screens.Login> {
             AuthenticationScreen(
                 onCreateAccountClick = {
-                    navController.navigate("signup")
+                    navController.navigate(Screens.SignUp)
                 },
                 onFacebookClick = {
-                    navController.navigate("signup")
+                    navController.navigate(Screens.SignUp)
                 },
                 onSuccess = {
                     // Navigate to home or dashboard
                 }
             )
         }
-        composable("signup") {
+        composable<Screens.SignUp> {
             SignUpScreen(
                 onLoginClick = {
                     navController.popBackStack()
